@@ -1,20 +1,33 @@
 // File: TextField.java
- package sketchui;
+package sketchui;
 
- import processing.core.PApplet;
- import processing.core.PFont;
+import processing.core.PApplet;
+import processing.core.PFont;
 
-
-public class TextField {
+public class TextField implements UIComponent {
     private PApplet parent;
 
-    private int fillColor, strokeColor, bgColor, fgColor, hoverColor, activeColor, textColor, cursorColor;
+    private int fillColor,
+            strokeColor,
+            bgColor,
+            fgColor,
+            hoverColor,
+            activeColor,
+            textColor,
+            cursorColor;
     private int paddingLeft;
     private int borderColor;
     private float posX, posY, w, h, tl, tr, br, bl, roundness;
-    private String label, value, placeholder, cursor = "", input = "", visibleInput = "", invisibleInput = "";
+    private String label,
+            value,
+            placeholder,
+            cursor = "",
+            input = "",
+            visibleInput = "",
+            invisibleInput = "";
     private boolean isClicked, isPressed, isHovered, isActive, suggestion;
     private boolean customRadii = false;
+    private boolean isVisible = true;
     private PFont font;
 
     private Runnable action;
@@ -23,24 +36,29 @@ public class TextField {
         this.parent = p;
         defaultSettings();
     }
+
     public TextField(PApplet p, String label) {
         this.parent = p;
         defaultSettings();
         this.label = label;
     }
-    public TextField (String label, String placeholder) {
+
+    public TextField(String label, String placeholder) {
         defaultSettings();
         this.label = label;
         this.placeholder = placeholder;
     }
+
     public TextField setLabel(String label) {
         this.label = label;
         return this;
     }
+
     public TextField setLabelColor(int textColor) {
         this.textColor = textColor;
         return this;
     }
+
     public TextField(PApplet p, String label, float x, float y) {
         this.parent = p;
         defaultSettings();
@@ -48,6 +66,7 @@ public class TextField {
         this.posY = y;
         this.label = label;
     }
+
     public TextField(PApplet p, String label, float x, float y, float w, float h) {
         this.parent = p;
         defaultSettings();
@@ -57,6 +76,7 @@ public class TextField {
         this.w = w;
         this.h = h;
     }
+
     public TextField(PApplet p, String label, float x, float y, float w, float h, float r) {
         this.parent = p;
         defaultSettings();
@@ -67,12 +87,14 @@ public class TextField {
         this.h = h;
         this.roundness = r;
     }
+
     public TextField(PApplet p, float x, float y) {
         this.parent = p;
         defaultSettings();
         this.posX = x;
         this.posY = y;
     }
+
     public TextField(PApplet p, float x, float y, float w, float h) {
         this.parent = p;
         defaultSettings();
@@ -81,6 +103,7 @@ public class TextField {
         this.w = w;
         this.h = h;
     }
+
     public TextField(PApplet p, float x, float y, float w, float h, float r) {
         this.parent = p;
         defaultSettings();
@@ -148,46 +171,57 @@ public class TextField {
         this.font = font;
         return this;
     }
+
     public TextField setBackground(int gray) {
         bgColor = gray;
         return this;
     }
-    public TextField setBackground(int hue,int gray) {
+
+    public TextField setBackground(int hue, int gray) {
         bgColor = parent.color(hue, gray);
         return this;
     }
+
     public TextField setBackground(int r, int g, int b) {
         bgColor = parent.color(r, g, b);
         return this;
     }
+
     public TextField setForeground(int gray) {
         fgColor = gray;
         return this;
     }
+
     public TextField setForeground(int r, int g, int b) {
         fgColor = parent.color(r, g, b);
         return this;
     }
+
     public TextField setBorderRadius(int radius) {
         this.roundness = radius;
         return this;
     }
+
     public TextField setBorderColor(int grey) {
         borderColor = parent.color(grey);
         return this;
     }
+
     public TextField setBorderColor(int r, int g, int b) {
         borderColor = parent.color(r, g, b);
         return this;
     }
+
     public TextField setColorActive(int gray) {
         activeColor = gray;
         return this;
     }
+
     public TextField setColorActive(int r, int g, int b) {
         activeColor = parent.color(r, g, b);
         return this;
     }
+
     public TextField setFocus(boolean active) {
         isClicked = active;
         return this;
@@ -213,17 +247,18 @@ public class TextField {
     public float getPosY() {
         return posY;
     }
+
     public float getWidth() {
         return w;
     }
+
     public float getHeight() {
         return h;
     }
 
     public float[] getPos() {
-        return new float[]{getPosX(), getPosY()};
+        return new float[] {getPosX(), getPosY()};
     }
-
 
     public void defaultSettings() {
         font = parent.createFont("Monospaced.plain", 15);
@@ -253,33 +288,43 @@ public class TextField {
     public void textFieldAction(Runnable action) {
         this.action = action;
     }
+
+    @Override
     public void display() {
         parent.stroke(isMouseOver() || isClicked() ? activeColor : borderColor);
-//        parent.stroke(isActive ? activeColor : fgColor);
-        //stroke(activeColor);
+        //        parent.stroke(isActive ? activeColor : fgColor);
+        // stroke(activeColor);
         parent.fill(bgColor);
 
-        //rect(x, y, w, h, 15, 0, 0, 15);
-        if (customRadii){
+        // rect(x, y, w, h, 15, 0, 0, 15);
+        if (customRadii) {
             parent.rect(posX, posY, w, h, tl, tr, br, bl);
         } else {
             parent.rect(posX, posY, w, h, roundness);
         }
         parent.fill(textColor);
         parent.textFont(font);
-        cursor  = isActive ? parent.frameCount % 60 <= 30 ? "|" : "" : "";
+        cursor = isActive ? parent.frameCount % 60 <= 30 ? "|" : "" : "";
         parent.textAlign(PApplet.BASELINE);
-        parent.text(visibleInput + cursor, posX + paddingLeft, posY + h/2 + 5);
+        parent.text(visibleInput + cursor, posX + paddingLeft, posY + h / 2 + 5);
         checkActive();
 
         parent.textAlign(PApplet.BASELINE);
         parent.stroke(0);
     }
+
     public void checkActive() {
         if (parent.mousePressed) {
-            isActive =  parent.mouseX > posX  && parent.mouseX < posX+w && parent.mouseY > posY && parent.mouseY < posY+h;
+            isActive =
+                    parent.mouseX > posX
+                            && parent.mouseX < posX + w
+                            && parent.mouseY > posY
+                            && parent.mouseY < posY + h;
         }
-        if (parent.mouseX > posX  && parent.mouseX < posX+w && parent.mouseY > posY && parent.mouseY < posY+h) {
+        if (parent.mouseX > posX
+                && parent.mouseX < posX + w
+                && parent.mouseY > posY
+                && parent.mouseY < posY + h) {
             parent.cursor(PApplet.TEXT);
 
         } else {
@@ -288,8 +333,9 @@ public class TextField {
     }
 
     public boolean isActive() {
-        return isActive;
+        return isActive && isVisible();
     }
+
     public void keyEvent() {
         if (parent.key == PApplet.ENTER) {
             try {
@@ -297,46 +343,70 @@ public class TextField {
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-//            PApplet.println(input);
-        } else if (Character.isLetterOrDigit(parent.key) || isSymbol(parent.key)) {
+            //            PApplet.println(input);
+        } else if (isActive() && Character.isLetterOrDigit(parent.key) || isSymbol(parent.key) || parent.key == ' ') {
+            if (parent.key == ' ') {
+                PApplet.println("why not me");
+            }
             input += parent.key;
             visibleInput += parent.key;
 
             if ((parent.textWidth(input)) >= (w - paddingLeft)) {
                 invisibleInput += visibleInput.charAt(0);
                 visibleInput = visibleInput.substring(1, visibleInput.length());
-                visibleInput = visibleInput.trim();
+//                visibleInput = visibleInput.trim();
             }
         }
         if (parent.key == PApplet.BACKSPACE && !visibleInput.isEmpty()) {
-//            PApplet.println(input.length());
-            visibleInput = visibleInput.substring(0, visibleInput.length()-1);
-            input = input.substring(0, input.length()-1);
+            //            PApplet.println(input.length());
+            visibleInput = visibleInput.substring(0, visibleInput.length() - 1);
+            input = input.substring(0, input.length() - 1);
             if (!invisibleInput.isEmpty()) {
-                visibleInput = invisibleInput.charAt(invisibleInput.length()-1) + visibleInput;
-                invisibleInput = invisibleInput.substring(0, invisibleInput.length()-1);
+                visibleInput = invisibleInput.charAt(invisibleInput.length() - 1) + visibleInput;
+                invisibleInput = invisibleInput.substring(0, invisibleInput.length() - 1);
             }
         }
-        visibleInput = visibleInput.trim();
-        invisibleInput = invisibleInput.trim();
-        input= input.trim();
+//        visibleInput = visibleInput.trim();
+//        invisibleInput = invisibleInput.trim();
+//        input = input.trim();
     }
 
     public boolean isMouseOver() {
-        return parent.mouseX > posX && parent.mouseX < posX + w && parent.mouseY > posY && parent.mouseY < posY + h;
+        return parent.mouseX > posX
+                && parent.mouseX < posX + w
+                && parent.mouseY > posY
+                && parent.mouseY < posY + h
+                && isVisible();
     }
 
     public boolean isClicked() {
-        return isMouseOver() && parent.mousePressed;
+        return isMouseOver() && parent.mousePressed && isVisible();
+    }
+
+    @Override
+    public void setVisible(boolean visibility) {
+        this.isVisible = visibility;
+    }
+
+    public boolean isVisible() {
+        return isVisible;
     }
 
     public boolean isSymbol(char c) {
-        return !Character.isLetterOrDigit(c) && !Character.isWhitespace(c) && !Character.isISOControl(c);
+        return !Character.isLetterOrDigit(c)
+                && !Character.isWhitespace(c)
+                && !Character.isISOControl(c);
     }
+
     public void runAction() {
-        action.run();
+        if (isVisible()) {
+            action.run();
+        }
     }
+
     public void nothing() {}
 
-
+    public void clear() {
+        label = "";
+    }
 }
