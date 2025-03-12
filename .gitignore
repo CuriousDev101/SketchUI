@@ -2,12 +2,11 @@
 .idea/
 library/
 bin/
-examples/
+out/
 ui.md
 Bug.md
 sketchConstant.md
 Feature.md
 buttonType.md
-library.properties
 UIManager.md
 PerfectDesingContainer.md
