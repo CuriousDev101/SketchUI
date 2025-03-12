@@ -345,9 +345,6 @@ public class TextField implements UIComponent {
             }
             //            PApplet.println(input);
         } else if (isActive() && Character.isLetterOrDigit(parent.key) || isSymbol(parent.key) || parent.key == ' ') {
-            if (parent.key == ' ') {
-                PApplet.println("why not me");
-            }
             input += parent.key;
             visibleInput += parent.key;
 
