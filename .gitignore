@@ -2,6 +2,7 @@
 .idea/
 .library/
 bin/
+.gitignore
 out/
 ui.md
 Bug.md
