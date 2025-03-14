@@ -23,4 +23,4 @@ cp -r SketchUI /home/curiousdev/sketchbook/libraries/
 # Step 6: Clean up
 rm MANIFEST.MF
 
-echo "Build and deployment completed successfully!
+echo "Build and deployment completed successfully!"
