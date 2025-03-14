@@ -59,6 +59,11 @@ public class TextField implements UIComponent {
         return this;
     }
 
+    public TextField setTextColor (int textColor) {
+        this.textColor = textColor;
+        return this;
+    }
+
     public TextField(PApplet p, String label, float x, float y) {
         this.parent = p;
         defaultSettings();
@@ -136,6 +141,13 @@ public class TextField implements UIComponent {
         return this;
     }
 
+    public TextField setSize(float w, float h, float r) {
+        this.w = w;
+        this.h = h;
+        this.roundness = r;
+        return this;
+    }
+
     public TextField setWidth(float w) {
         this.w = w;
         return this;
@@ -199,6 +211,15 @@ public class TextField implements UIComponent {
 
     public TextField setBorderRadius(int radius) {
         this.roundness = radius;
+        return this;
+    }
+
+    public TextField setBorderRadius(float tl, float tr, float br, float bl) {
+        this.tl = tl;
+        this.tr = tr;
+        this.br = br;
+        this.bl = bl;
+        this.customRadii = true;
         return this;
     }
 
@@ -269,7 +290,7 @@ public class TextField implements UIComponent {
         br = 0;
         bl = 0;
         roundness = 0;
-        paddingLeft = 11;
+        paddingLeft = 5;
 
         fillColor = 200;
         strokeColor = 0;
@@ -291,7 +312,7 @@ public class TextField implements UIComponent {
 
     @Override
     public void display() {
-        parent.stroke(isMouseOver() || isClicked() ? activeColor : borderColor);
+        parent.stroke(isActive() || isClicked() ? activeColor : borderColor);
         //        parent.stroke(isActive ? activeColor : fgColor);
         // stroke(activeColor);
         parent.fill(bgColor);
@@ -337,18 +358,19 @@ public class TextField implements UIComponent {
     }
 
     public void keyEvent() {
+        if (isActive()) {
         if (parent.key == PApplet.ENTER) {
             try {
                 action.run();
             } catch (Exception e) {
                 throw new RuntimeException(e);
             }
-            //            PApplet.println(input);
-        } else if (isActive() && Character.isLetterOrDigit(parent.key) || isSymbol(parent.key) || parent.key == ' ') {
+            //            PApplet.println(input);,
+        } else if (Character.isLetterOrDigit(parent.key) || isSymbol(parent.key) || parent.key == ' ') {
             input += parent.key;
             visibleInput += parent.key;
 
-            if ((parent.textWidth(input)) >= (w - paddingLeft)) {
+            if ((parent.textWidth(input)) >= (w - paddingLeft - 5)) {
                 invisibleInput += visibleInput.charAt(0);
                 visibleInput = visibleInput.substring(1, visibleInput.length());
 //                visibleInput = visibleInput.trim();
@@ -362,6 +384,7 @@ public class TextField implements UIComponent {
                 visibleInput = invisibleInput.charAt(invisibleInput.length() - 1) + visibleInput;
                 invisibleInput = invisibleInput.substring(0, invisibleInput.length() - 1);
             }
+        }
         }
 //        visibleInput = visibleInput.trim();
 //        invisibleInput = invisibleInput.trim();
@@ -396,7 +419,7 @@ public class TextField implements UIComponent {
     }
 
     public void runAction() {
-        if (isVisible()) {
+        if (isVisible() && parent.key == PApplet.ENTER) {
             action.run();
         }
     }

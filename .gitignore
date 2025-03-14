@@ -11,3 +11,6 @@ Feature.md
 buttonType.md
 UIManager.md
 PerfectDesingContainer.md
+.gradle/
+.settings/
+.project
