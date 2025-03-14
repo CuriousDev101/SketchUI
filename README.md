@@ -19,42 +19,16 @@ A simple UI library for Processing with **Button** and **TextField** components.
 
 ## Installation
 
-Follow these steps to install and use the **SketchUI** library in your Processing project:
+1. **Download the Library**  
+   Download the latest version of the SketchUI library from the repository (or clone it).
 
-### 1. **Download the Library:**
-   - Download the latest version of the **SketchUI** library from the repository. You can either clone the repository or download it as a ZIP file.
-   
-   If you are using the **JAR** file from the repository, the library is located at:
-   ```
-   out/artifacts/SketchUI_jar/SketchUI.jar
-   ```
+2. **Install the Library in Processing**  
+   Simply copy the entire `SketchUI` folder into the Processing libraries folder:
+   - On **Windows**: `Documents/Processing/libraries/`
+   - On **macOS**: `Documents/Processing/libraries/`
+   - On **Linux**: `~/Processing/libraries/`
 
-### 2. **Install the Library in Processing:**
 
-   - **For Windows and macOS:**
-     1. Download the `.jar` file (`SketchUI.jar`) from the repository or compile it from the source.
-     2. Open **Processing**.
-     3. Go to the **Sketch** menu and select **Import Library...** > **Add Library...**.
-     4. Click on **Add JAR** and select the `SketchUI.jar` file you downloaded or compiled.
-
-   - **For Linux:**
-     1. Download the `.jar` file (`SketchUI.jar`) or compile it from the repository.
-     2. Open **Processing**.
-     3. Navigate to the **Sketch** menu and select **Import Library...** > **Add Library...**.
-     4. Click on **Add JAR** and navigate to the location where you saved `SketchUI.jar`. Select it to add to your project.
-
-   - **Alternative method for all platforms:**
-     1. If you prefer to manually include the library:
-        - Navigate to the **Processing libraries** folder:
-          - **On Windows**: `Documents/Processing/libraries/`
-          - **On macOS**: `Documents/Processing/libraries/`
-          - **On Linux**: `~/Processing/libraries/`
-     2. Create a folder named `SketchUI`.
-     3. Inside the `SketchUI` folder, create another folder named `library`.
-     4. Place the `SketchUI.jar` file inside the `library` folder. Your directory structure should look like this:
-     ```
-     ~/Processing/libraries/SketchUI/library/SketchUI.jar
-     ```
 
 ### 3. **Include the Library in Your Sketch:**
    - After installing the library, you need to import it at the beginning of your Processing sketch:
