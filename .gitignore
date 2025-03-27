@@ -6,7 +6,7 @@
 
 # Ignore Gradle build output directory
 build/
-gradlew/
+gradle/
 
 # Compiled code and build output
 bin/
@@ -21,7 +21,7 @@ lib/
 .project
 
 settings.gradle
-gradlew/
+gradlew
 gradlew.bat
 gradle.properties
 build.gradle
