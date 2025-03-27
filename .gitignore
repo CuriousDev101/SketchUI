@@ -10,6 +10,7 @@ gradlew/
 
 # Compiled code and build output
 bin/
+lib/
 
 # Class files
 *.class
