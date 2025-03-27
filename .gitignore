@@ -1,18 +1,8 @@
 # Ignore a specific file
-.idea/
-.library/
-bin/
 .gitignore
-out/
-ui.md
-Bug.md
-sketchConstant.md
-Feature.md
-buttonType.md
-UIManager.md
-PerfectDesingContainer.md
-.gradle/
-.settings/
-.project
-./SketchUI.iml
-out/
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build

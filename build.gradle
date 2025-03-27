@@ -1,3 +1,19 @@
+plugins {
+    id 'java-library'
+}
+
+// group 'sketchui'
+// version '1.0'
+
+sourceSets.main.java.srcDirs = ['src/sketchui']
+
+repositories {
+    mavenCentral()
+  // maven { url = 'https://repo1.maven.org/maven2/' }
+}
+
 dependencies {
-    implementation files('lib/core.jar')
+  // implementation 'org.processing:core:4.0.0'
+  // implementation name: 'core'
+    implementation files('lib/core.jar') // Processing core dependency
 }

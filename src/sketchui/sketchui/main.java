@@ -1,9 +1,8 @@
 // File: SketchUI.java
 package sketchui;
 
-import processing.core.PApplet;
-
 import java.util.ArrayList;
+import processing.core.PApplet;
 
 public class main {
   static ArrayList<Button> buttons = new ArrayList<>();
@@ -33,8 +32,7 @@ public class main {
     return button;
   }
 
-  public static Button createButton(
-      PApplet parent, String label, int alignment, float x, float y) {
+  public static Button createButton(PApplet parent, String label, int alignment, float x, float y) {
     Button button = new Button(parent, label, alignment, x, y);
     buttons.add(button);
     return button;
