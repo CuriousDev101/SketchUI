@@ -17,8 +17,8 @@ bin/
 # Configurations
 .settings/
 
-./settings.gradle
-./gradlew
-./gradlew.bat
-./gradle.properties
-./build.gradle
+settings.gradle
+gradlew
+gradlew.bat
+gradle.properties
+build.gradle
