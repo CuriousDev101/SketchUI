@@ -21,7 +21,7 @@ lib/
 .project
 
 settings.gradle
-gradlew
+gradlew/
 gradlew.bat
 gradle.properties
 build.gradle
