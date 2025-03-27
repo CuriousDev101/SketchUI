@@ -17,6 +17,8 @@ lib/
 
 # Configurations
 .settings/
+.classpath
+.project
 
 settings.gradle
 gradlew
