@@ -1,3 +1,38 @@
+plugins {
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
 dependencies {
-    implementation files('lib/core.jar')
+    implementation files('lib/core.jar') // Include external JARs
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['src/sketchui']
+        }
+    }
+}
+
+jar {
+    manifest {
+        attributes(
+            'Manifest-Version': '1.0',
+            'Main-Class': 'sketchui.Sketchui' // Replace with your actual main class
+        )
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+}
+
+// Task to copy the JAR file to the libraries folder
+task deployLibrary(type: Copy) {
+    dependsOn jar
+    from("$buildDir/libs/Sketchui.jar")
+    into("/home/curiousdev/sketchbook/libraries/SketchUI/library")
 }
