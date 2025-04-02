@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation files('lib/core.jar') 
+    implementation files('./lib/core.jar') 
 }
 
 sourceSets {
@@ -19,6 +19,9 @@ sourceSets {
 }
 
 jar {
+    jar {
+        exclude 'processing/**'
+    }
     manifest {
         attributes(
             'Manifest-Version': '1.0',
