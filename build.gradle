@@ -7,7 +7,7 @@ repositories {
 }
 
 dependencies {
-    implementation files('lib/core.jar') // Include external JARs
+    implementation files('lib/core.jar') 
 }
 
 sourceSets {
@@ -22,7 +22,7 @@ jar {
     manifest {
         attributes(
             'Manifest-Version': '1.0',
-            'Main-Class': 'sketchui.Sketchui' // Replace with your actual main class
+            'Main-Class': 'sketchui.Sketchui'       
         )
     }
     from {
@@ -30,9 +30,11 @@ jar {
     }
 }
 
-// Task to copy the JAR file to the libraries folder
 task deployLibrary(type: Copy) {
     dependsOn jar
-    from("$buildDir/libs/Sketchui.jar")
+    from("$buildDir/libs/SketchUI.jar")
     into("/home/curiousdev/sketchbook/libraries/SketchUI/library")
+    doFirst {
+        println "Copying SketchUI.jar from $buildDir/libs to /home/curiousdev/sketchbook/libraries/SketchUI/library"
+    }
 }
