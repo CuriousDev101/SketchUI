@@ -32,8 +32,11 @@ void setup() {
 }
 
 void draw() {
-  fill(255);
-  text(message, width/2, 200);
+  background(200);
+  fill(0);
+  textSize(23);
+  textAlign(CENTER, CENTER);
+  text(message, width/2, height/2);
 }
 
 void inputAction() {
