@@ -7,13 +7,15 @@ SketchUI is a comprehensive library designed to enhance the user interface (UI) 
 
 ## UI Elements
 The library includes a variety of UI elements such as:
-- Buttons
-- Sliders
-- Checkboxes
-- Text Inputs
-- Dropdown Menus
-- Radio Buttons
-- Progress Bars
+- Currnet Version:
+  - Buttons
+  - Text Inputs
+- Planned Features (Not Yet Implemented):
+  - Sliders
+  - Checkboxes
+  - Dropdown Menus
+  - Radio Buttons
+  - Progress Bars
 
 Each element is designed to be highly customizable, allowing developers to tailor the appearance and behavior to fit their specific needs.
 
@@ -22,58 +24,16 @@ Each element is designed to be highly customizable, allowing developers to tailo
 ### Prerequisites
 - Processing IDE (version 3.5.4 or later)
 
-### Steps to Install
+## Installation
 
-#### Windows
-1. **Download the Library:**
-   - Clone the repository or download the ZIP file from the [GitHub repository](https://github.com/CuriousDev101/SketchUI).
+1. **Download the Library**  
+   Download the latest version of the SketchUI [SketchUI GitHub repository](https://github.com/CuriousDev101/SketchUI) library from the repository (or clone it).
 
-2. **Extract Files:**
-   - If you downloaded the ZIP file, extract it to a desired location on your computer.
-
-3. **Add to Processing Libraries:**
-   - Copy the extracted `SketchUI` folder to the `libraries` folder of your Processing sketchbook. You can find or create the `libraries` folder in your Processing sketchbook location (usually located in `Documents/Processing`).
-
-4. **Import the Library:**
-   - Open Processing IDE and start a new sketch. Import the library at the beginning of your sketch:
-     ```java
-     import sketchui.*;
-     import sketchui.Themes.*;
-     ```
-
-#### Linux
-1. **Download the Library:**
-   - Clone the repository or download the ZIP file from the [GitHub repository](https://github.com/CuriousDev101/SketchUI).
-
-2. **Extract Files:**
-   - If you downloaded the ZIP file, extract it to a desired location on your computer.
-
-3. **Add to Processing Libraries:**
-   - Copy the extracted `SketchUI` folder to the `libraries` folder of your Processing sketchbook. You can find or create the `libraries` folder in your Processing sketchbook location (usually located in `~/Documents/Processing`).
-
-4. **Import the Library:**
-   - Open Processing IDE and start a new sketch. Import the library at the beginning of your sketch:
-     ```java
-     import sketchui.*;
-     import sketchui.Themes.*;
-     ```
-
-#### macOS
-1. **Download the Library:**
-   - Clone the repository or download the ZIP file from the [GitHub repository](https://github.com/CuriousDev101/SketchUI).
-
-2. **Extract Files:**
-   - If you downloaded the ZIP file, extract it to a desired location on your computer.
-
-3. **Add to Processing Libraries:**
-   - Copy the extracted `SketchUI` folder to the `libraries` folder of your Processing sketchbook. You can find or create the `libraries` folder in your Processing sketchbook location (usually located in `Documents/Processing`).
-
-4. **Import the Library:**
-   - Open Processing IDE and start a new sketch. Import the library at the beginning of your sketch:
-     ```java
-     import sketchui.*;
-     import sketchui.Themes.*;
-     ```
+2. **Install the Library in Processing**  
+   Simply copy the entire `SketchUI` folder into the Processing libraries folder:
+   - On **Windows**: `Documents/Processing/libraries/`
+   - On **macOS**: `Documents/Processing/libraries/`
+   - On **Linux**: `~/sketchbook/libraries/`
 
 ## Usage Example
 Here's a basic example of how to use SketchUI in your Processing sketch:
