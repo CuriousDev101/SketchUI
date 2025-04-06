@@ -23,4 +23,4 @@ out/
 # Ignore Gradle build output directory
 build
 
-./refactror.java
+refactror.java
